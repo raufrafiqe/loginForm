@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verify</title>
+</head>
+<style>
+   *{
+    margin: 0%;
+    padding: 0%;
+   } 
+</style>
+<body>
+<div style="height: 100px;width: 60%;background-color: rgb(110, 43, 226);display: flex;align-items: center;">
+
+<input type="email" placeholder="Email" style="height: 30px;width: 70%;margin-left: 10px;">
+<input type="text" placeholder="new password" style="height: 30px;width: 70%;margin-left: 10px;">
+<input type="text" placeholder="confirm password" style="height: 30px;width: 70%;margin-left: 10px;">
+<button style="height: 30px;width: 20%;margin-left: 20px;background-color:brown;">Verify></button>
+<button style="height: 30px;width: 20%;margin-left: 20px;background-color:brown;">Update</button>
+
+</div>    
+
+
+<script>
+    var email=document.querySelectorAll('input')[0]
+    var new1=document.querySelectorAll('input')[1]
+    var confirm=document.querySelectorAll('input')[2]
+    new1.style.display="none"
+    confirm.style.display="none"
+
+    var btn=document.querySelectorAll('button')[0]
+    var update=document.querySelectorAll('button')[1]
+    update.style.display="none"
+
+
+    var myindex=-1;   
+    btn.addEventListener('click',()=>{
+    var data=JSON.parse(localStorage.getItem('rauf'))
+    var Email=email.value
+    var z=data.filter((ele,index)=>{
+        if(ele.email==Email){
+        myindex=index   
+        
+
+        new1.style.display="block"
+        confirm.style.display="block"
+        update.style.display="block"
+        email.style.display="none"
+        btn.style.display='none'
+        }
+
+    })
+
+    })
+
+    update.addEventListener('click',()=>{
+    if(new1.value==confirm.value){
+       
+
+    var data=JSON.parse(localStorage.getItem('rauf'))
+    
+        data[myindex].password=new1.value
+        localStorage.setItem('rauf',JSON.stringify(data))
+        alert("u password is update")
+        new1.value=""
+        confirm.value=""
+
+    }
+
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Signup Form</title>
+  <link rel="stylesheet" href="./rauf.css">
+</head>
+
+<body>
+    <label for="one"></label>
+  <div class="main">
+    <h1 class="h1">Signup Page</h1>
+   <form>
+      <input type="text" placeholder="UserName" required>
+      <input type="email" placeholder="Email" id="one" required>
+      <input type="password" placeholder="Password" required>
+      <input type="text" placeholder="Gender" required>
+      </form>
+    <div class="btn">
+      <button>signup</button>
+      <button>reset</button>
+    </div>
+    <ul class="ul">
+    <a href="./login.html"><li>Already Registered</li></a>
+    </ul>
+  </div>
+
+  <script>
+
+    var inp1 = document.querySelectorAll('input')[0]
+    var inp2 = document.querySelectorAll('input')[1]
+    var inp3 = document.querySelectorAll('input')[2]
+    var inp4 = document.querySelectorAll('input')[3]
+
+
+    var btnin = document.querySelectorAll('button')[0]
+    var btnres = document.querySelectorAll('button')[1]
+
+    btnin.addEventListener('click', () => {
+      var data = localStorage.getItem('rauf')
+
+      if (data){
+        var obj = {name:`${inp1.value}`,email:`${inp2.value}`, password: `${inp3.value}`,gender:`${inp4.value}`, }
+        var con = JSON.parse(data)
+        con.push(obj)
+        localStorage.setItem('rauf', JSON.stringify(con))
+      }
+      else {
+        var obj = { name: `${inp1.value}`,email:`${inp2.value}`, password: `${inp3.value}`,gender:`${inp4.value}`, }
+        localStorage.setItem('rauf', JSON.stringify([obj]))
+      }
+    })
+
+    btnres.addEventListener('click',()=>{
+      inp1.value=""
+      inp2.value=""
+      inp3.value=""
+      inp4.value=""
+    })
+   
+
+  </script>
+
+</body>
+
+</html>

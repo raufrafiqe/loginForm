@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./rauf.css">
+  <title>login</title>
+</head>
+<body>
+  <form>
+    <label for="one"></label>
+  </form>
+  <div class="main" style="background-color: rgb(0, 166, 255);">
+    <h1 class="h1">Login Page</h1>
+    <div class="inp">
+      <input type="email" placeholder="UserName/Email" id="one" required>
+      <input type="password" placeholder="Password" required>
+    </div>
+    <div class="btn">
+      <button>login</button>
+    </div>
+    <ul class="ul">
+      <a href="./signup.html"><li>Register Now</li></a>
+      <a href="./Verify.html"><li>Forgot Password</li></a>
+    </ul>
+  </div>
+
+  <script>
+
+    var inp1 = document.querySelectorAll('input')[0]
+    var inp2 = document.querySelectorAll('input')[1]
+
+    var btnlogin = document.querySelectorAll('button')[0]
+
+    btnlogin.addEventListener('click',()=>{
+    var data=JSON.parse(localStorage.getItem('rauf'))
+
+      var value1=inp1.value
+      var value2=inp2.value  
+
+     var z=data.filter((ele) => {
+       if(ele.name==value1 && ele.password==value2){
+        return ele
+       }
+     })
+     if(z!=""){
+      alert('u are login')
+    }
+   else(alert('u are not login'))
+
+    })
+  
+
+
+
+  </script>
+
+</body>
+
+</html>
